@@ -1,0 +1,12 @@
+import express from 'express';
+import { verifyToken } from '../utils/verifyToken.js';
+import { createProject, updateProject, deleteProject, getAllProjectCreated, getTheProject, addMember, deleteMember } from '../controllers/project.controller.js';
+const router = express.Router();
+router.post('/createProject', verifyToken, createProject);
+router.put('/updateProject/:projectId', verifyToken, updateProject);
+router.delete('/deleteProject/:projectId', verifyToken, deleteProject);
+router.get('/getAllProject', verifyToken, getAllProjectCreated);
+router.get('/theProject/:projectId', verifyToken, getTheProject);
+router.post('/addMember/:projectId', verifyToken, addMember);
+router.post('/deleteMember/:projectId/:memberId', verifyToken, deleteMember);
+export default router;
