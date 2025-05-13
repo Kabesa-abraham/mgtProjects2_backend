@@ -39,7 +39,7 @@ export const createUser = async (req, res, next) => {
                 httpOnly: true,
                 maxAge: 1 * 24 * 60 * 60 * 1000, //1day
                 secure: process.env.NODE_ENV === 'production', //if in production, use HTTPS
-                sameSite: 'strict', // allow cookies in cross-origin requests
+                sameSite: 'none', // allow cookies in cross-origin requests
             }).json(rest);
         }
     }
@@ -75,7 +75,7 @@ export const loginUser = async (req, res, next) => {
                 httpOnly: true,
                 maxAge: 1 * 24 * 60 * 60 * 1000, //1day
                 secure: process.env.NODE_ENV === 'production', //if in production, use HTTPS
-                sameSite: 'strict', // allow cookies in cross-origin requests
+                sameSite: 'none', // allow cookies in cross-origin requests
             }).json(rest);
         }
     }
@@ -108,7 +108,7 @@ export const deleteUser = async (req, res, next) => {
             res.status(200).clearCookie('token_user', {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
-                sameSite: 'strict'
+                sameSite: 'none'
             }).json('User has been deleted successfuly');
         }
     }
@@ -120,7 +120,7 @@ export const logoutUser = async (req, res, next) => {
     res.status(200).clearCookie('token_user', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict'
+        sameSite: 'none'
     }).json('User has been logged out successfuly');
 };
 export const getAllUsers = async (req, res, next) => {
@@ -198,7 +198,7 @@ export const AuthWithGoogle = async (req, res, next) => {
                 httpOnly: true,
                 maxAge: 1 * 24 * 60 * 60 * 1000, //1day
                 secure: process.env.NODE_ENV === 'production', //if in production, use HTTPS
-                sameSite: 'strict', // allow cookies in cross-origin requests
+                sameSite: 'none', // allow cookies in cross-origin requests
             }).json(rest);
         }
         if (!user) {
@@ -228,7 +228,7 @@ export const AuthWithGoogle = async (req, res, next) => {
                     httpOnly: true,
                     maxAge: 1 * 24 * 60 * 60 * 1000, //1day
                     secure: process.env.NODE_ENV === 'production', //if in production, use HTTPS
-                    sameSite: 'strict', // allow cookies in cross-origin requests
+                    sameSite: 'none', // allow cookies in cross-origin requests
                 }).json(rest);
             }
         }
